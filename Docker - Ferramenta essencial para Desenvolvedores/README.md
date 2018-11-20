@@ -155,6 +155,146 @@
 
 * docker container run --help
 
+* docker container run --name mydev -it debian bash
+
+* Saia do container (exit)
+
+* Execute novamente o comando docker container run --name mydev -it debian bash
+
+* Vai ocorrer um erro, pois já existe o mesmo nome.
+
+* containers precisam ter nomes únicos e o método run sempre cria um novo container.
+
+<h2>Reutilizar containers</h2>
+
+* docker container ls //lista os containers que foram criados
+
+* docker container ls -a //mostra todos independentemente dos status
+
+* docker container start -ai mydeb //apache e modo interativo
+
+* touch curso-docker.txt //CRIA ARQUIVO NO CONTAINER
+
+* Sair e entrar novamente e verificar que o arquivo ainda existe. O arquivo ainda continuara lá.
+
+<h2>Cedo, surdo e mudo, só que não</h2>
+
+* Não faz sentido ter um container completamente isolado.
+
+* Capaz de expor uma porta dentro do container.
+
+* Compartilhar uma pasta do container para a máquina host.
+
+* Compartilha arquivos do container para a máquina host e vice-versa.
+
+* Comunicação entre os próprios containers e todos conversando entre si.
+
+* Um container que não tem um minimo de comunicação não tem sentido.
+
+* Isolamento controlado. Minimalista.
+
+<h2>Mapear portas dos containers</h2>
+
+* docker container run -p 8080:80 nginx //De fora do container irá acessar a 8080 e o serviço dentro está na porta 80.
+
+* É possível acessar o localhost:8080 e acessará o nginx que está na porta 80.
+
+<h2>Mapear diretórios para o container</h2>
+
+* Criar um diretório na máquina host
+
+* mkdir curso-docker
+
+* cd curso-docker
+
+* mkdir ex-volume
+
+* cd ..
+
+* code .
+
+* docker container run -p 8080:80 -v $(pwd)/not-found:/usr/share/nginx/html //-v mapeia o volume passa a pasta do host que você quer mapear : a pasta que você quer dentro do container
+
+
+<h2>Rodar um servidor web em background</h2>
+
+* Modo daemon //MODO BACKGROUND
+
+* Modo princípal para o Docker.
+
+* docker container run -d --name ex-daemon-basic -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx //-d daemon
+
+* Retornará o ID do container que estará executando
+
+* docker container ps
+
+* docker container stop ex-daemon-basic //PARA O CONTAINER
+
+<h2>Gerenciar o container em background</h2>
+
+* docker container stop ex-daemon-basic
+
+* docker container start ex-daemon-basic
+
+* docker container restart ex-daemon-basic
+
+* É possível que ao inves de pegar o nome do container, é possível pegar o id do container.
+
+<h2>Manipulação de containers em modo daemon</h2>
+
+* Comandos alias.
+
+* docker container ls //SINTAXE NOVA
+
+* docker container list //SINTAXE NOVA
+
+* docker container ps //SINTAXE NOVA
+
+* docker ps //SINTAXE ANTIGA
+
+* docker container ls -a //TODOS CONTAINERS
+
+* docker container list -a //MESMO DE CIMA
+
+* docker container ps -a //MESMA COISA
+
+* docker ps -a //ANTIGO
+
+* docker container start NOME_CONTAINER
+
+* docker container inspect NOME_CONTAINER // FORMATO JSON VARIAS CARACTERÍSTCAS QUE SE BASEIA O CONTAINER
+
+* docker container exec NOME_CONTAINER uname -or //TIPO QUE ESTÁ SENDO EXECUTADO NO CONTAINER
+
+<h2>Nova sintaxe do Docker Client</h2>
+
+* Comando semelhantes que fazem as mesmas coisas. Fizeram isso para deixar mais claro.
+
+* docker image ls //LISTA AS IMAGENS
+
+* docker container ls //LISTA CONTAINERS
+
+* docker rmi ID_IMAGEM //SINTAXE ANTIGA //REMOVE IMAGEM
+
+* docker image rm ID_IMAGEM //SINTAXE NOVA
+
+------------------------------------------------------------------------
+<h1>Seção 05 - Deixando de ser apenas um usuário</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
