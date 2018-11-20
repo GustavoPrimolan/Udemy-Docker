@@ -91,6 +91,71 @@
 
 <img src="imgs/04.png"/>
 
+* Verificar instalação pela documentação do Docker.
+
+* Docker CE - Community Edition.
+
+
+---------------------------------------------------------------------------
+
+<h1>Seção 04 - Uso Básico do Docker</h1>
+
+<h2>Hello World</h2>
+
+* Comando: docker --help
+
+* Comando: docker container run hello-world
+
+<h2>Comando run</h2>
+
+* Versão nova dos comandos.
+
+* A partir do comando run a gente baixou uma imagem, executamos o container e o container foi mostrado.
+
+* Foi feito o cache da imagem.
+
+* Executar o container de forma interativa.
+
+* Comando run é a concatenação de 4 comandos:
+	* docker image pull - baixar a imagem do registry para a máquina local.
+	* docker container create - Criação do container.
+	* docker container start - Inicialização do container.
+	* docker container exec - Execução do container em modo interativo.
+
+<h2>Ferramentas diferentes</h2>
+
+* Modo interativo - Para experimentos - Não é o modo prioritário. O modo prioritário é o modo daemon.
+
+* Comando: bash --version
+
+* docker container run debian bash --version
+
+* docker container ps - Mostra os containers em execução
+
+* docker container ps -a - Mostra os todos os containers independente dos status.
+
+* Ele executa o comando e depois fecha o container.
+
+* docker container run --rm debian - Quando terminar o processo removera da lista de containers.
+
+<h2>Run cria sempre novos containers</h2>
+
+* O comando run sempre cria novos containers.
+
+* docker container run -it debian bash (modo interativo e acesso ao terminal)
+
+* Dentro do terminal do container
+	* touch curso-docker.txt
+	* ls curso-docker.txt
+	* exit
+
+* Executa o docker container run it debian bash (de novo) e da um ls curso-docker.txt. Não existirá
+
+<h2>Containers devem ter nomes únicos</h2>
+
+* docker container run --help
+
+
 
 
 
