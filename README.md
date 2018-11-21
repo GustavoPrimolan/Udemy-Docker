@@ -1,5 +1,3 @@
-<a href="https://www.udemy.com/curso-docker/" target="_blank">Link do Curso</a>
+<h1>Cursos Docker Udemy</h1>
 
-<a href="https://github.com/cod3rcursos/curso-docker" target="_blank">Link do Repositório do Curso</a>
-
-
+* Repositório destinado aos cursos sobre Docker da plataforma Udemy.

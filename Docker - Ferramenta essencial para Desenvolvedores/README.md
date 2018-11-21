@@ -281,25 +281,89 @@
 ------------------------------------------------------------------------
 <h1>Seção 05 - Deixando de ser apenas um usuário</h1>
 
+<h2>Introdução</h2>
+
+* Definir própria imagem
+
+* Ter varios ambientes (testes, produção, homologação)
+
+* Ter várias configurações, etc.
+
+* Personalizar imagens que estão públicas para adaptar a sua necessidade.
+
+<h2>Diferença entre container e imagem</h2>
+
+* Imagem -> Classe
+
+* Container -> Objeto
+
+* Imagem um agregado de camadas.
+
+* Container é o processo e a imagem é o modelo de arquivos.
+
+* docker container --help //MOSTRA TUDO O QUE TUDO PODE SER FEITO COM O COMANDO CONTAINER
+
+* docker image --help //MOSTRA TUDO O QUE TUDO PODE SER FEITO COM O COMANDO IMAGE
+
+<h2>Entendo melhor as imagens</h2>
+
+* docker image pull redis:latest //BAIXA A IMAGEM DO REPOSITÓRIO
+
+* docker image ls //LISTA TODOS AS IMAGENS
+
+* docker image inspect redis:latest // INSPECIONA A IMAGEM
+
+* docker image tag redis:latest cod3r-redis //CRIA UMA NOVA TAG PARA A IMAGEM
+
+* docker image rm redis:latest //IRÁ EXCLUIR AS IMAGENS
+
+* Várias tags que acompanham a mesma hash.
+
+* Não é bom pegar a ultima versão, por conta da instabilidade, sendo possível quebrar alguma funcionalidade.
+
+* Quando tiver trabalhando com ambiente de produção e de desenvolvimento as versões devem ser iguais, sendo a melhor prática.
+
+* Amarrar a versão das aplicações, de forma manual.
+
+<h2>Comandos básicos no gerenciamento de imagens</h2>
+
+* 7 comandos para gerenciamento de imagens.
+
+* Todos comandos começam com docker image.
+
+* docker imagem pull //PUXA A IMAGEM DO DOCKERHUB - ACONTECE DE FORMA IMPLICITA NO run (docker image run).
+
+* docker image ls //LISTA AS IMAGENS NA MÁQUINA HSOT
+
+* docker imagem rm NOME_DA_TAG OU HASH //EXCLUI A IMAGEM
+
+* docker image inspect //MOSTRA AS INFORMAÇÕES DA IMAGEM
+
+* docker image tag IMAGEM_DE_ORIGEM TAG_QUE_VOCE_QUER_COLOCAR //CRIA UMA TAG DE UMA IMAGEM EXISTENTE
+
+* docker image build //INTERPRETA O ARQUIVO E CONTRÓI SUA IMAGEM
+
+* docker composer //TRABALHAR COM VÁRIOS AMBIENTES JUNTOS
+
+* docker image push //PUBLICA NO REGISTRY LOCAL OU NO DOCKERHUB
+
+* docker image build //COMANDO FUNDAMENTAL
+
+<h2>Docker Hub x Docker Registry</h2>
+
+* Serviço server side para serviços e repositório de imagens - Docker Registry.
+
+* Docker Hub - SaaS (Software as a Service) - Ele possui o Docker Registry.
+
+* Docker Hub tem imagens oficiais que mantem pelo time do próprio docker. 
+
+* De prioridade do Docker Hub para imagens oficiais.
+
+* Possível criar um Docker Registry particular (para sua empresa, por exemplo).
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h2>Meu primeiro build</h2>
 
 
 
