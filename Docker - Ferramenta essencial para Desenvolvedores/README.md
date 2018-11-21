@@ -361,9 +361,48 @@
 
 * Possível criar um Docker Registry particular (para sua empresa, por exemplo).
 
-
-
 <h2>Meu primeiro build</h2>
+
+* Criar um arquivo com a nomeclatura "Dockerfile"
+
+* Escrever os seguintes comandos nele 
+
+* FROM nginx:latest
+* RUN echo '<h1><Hello World!</h1>' > /usr/share/nginx/html/index.html
+
+* Após executar o comando:
+
+* docker image build -t ex-simple-build . //FAZ O BUILD E DA O NOME PARA ELE DE ex-simple-build E O . SIGNIFICA QUE FARÁ UM BUILD.
+
+* docker container run -p 80:80 ex-simple-build
+
+* O nome precisa ser exatamente Dockerfile, se não ocorrerá um erro.
+
+<h2>Uso das instruções de preparação</h2>
+
+* Criação de um Dockerfile que será passado parâmetros no momento em que fizer o build.
+
+* FROM debian
+* LABEL maintainer 'Gustavo'
+* ARG S3_BUCKET=files //S3_BUCKET É UMA ÁREA DA AMAZON QUE PEGA ARQUIVO, MAS É APENAS UM EXEMPLO FICTICIO
+* ENV S3_BUCKET=${S3_BUCKET}
+
+* Cada comando é um layer (camada)
+
+* Depois executar 
+
+* docker image build -t ex-build-arg .
+
+* docker container run ex-build-arg bash -c 'echo $S3_BUCKET'
+
+* docker image build --build-arg S3_BUCKET=myapp -t ex-build-arg . //GERA A IMAGEM MUDANDO O PARÂMETRO
+
+* docker image inspect --format="{{}index .Config.Labels \"maintainer\"}" NOME_DA_IMAGEM //PESQUISA DENTRO DE INSPECTS
+
+
+
+
+
 
 
 
