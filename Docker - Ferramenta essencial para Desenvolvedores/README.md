@@ -452,6 +452,70 @@ httpd.serve_forever()
 
 ```
 
+* Concatenas varias layers com o comando RUN no arquivo Dockerfile.
+
+* FROM python:3.6
+* LABEL maintainer 'Gustavo'
+* RUN useradd www && \
+	* mkdir /app && \
+	* mkdir /log && \
+	* chown www /log
+
+* USER www
+* VOLUME /log
+* WORKDIR /app
+* EXPOSE 8000
+
+* ENTRYPOINT ["/usr/local/bin/python"]
+* CMD ["run.py"]
+
+* docker image build -t ex-build-dev .
+
+* docker container run -it -v $(pwd):/app -p 80:8080 --name python-server ex.build-dev //-v É O VOLUME QUE FOI SETADO NO Dockerfile
+
+* docker container run -it --volumes-from=python-server debian cat /log/http-server.log
+
+<h2>Eviar Imagens para o DockerHub</h2>
+
+* Criar conta
+
+* docker image ls
+
+* Criar nova tag utilizando o usuário do DockerHub
+
+* docker image tag ex-simple-build gustavoprimolan/simple-build:1.0
+
+* docker login --username=gustavoprimolan
+
+* colocar senha
+
+* docker image push NOME_DA_IMAGEM (gustavoprimolan/simple-build:1.0)
+
+-----------------------------------------------------------------------------
+<h1>Seção 06 - Redes</h1>
+
+<h2>Visão Geral e Tipos de Redes</h2>
+
+* Modelo padrão do Docker utiliza o tipo Bridge.
+
+<img src="imgs/05.png"/>
+
+* Docker suporta 4 tipos de redes, mas será concentrado em 3 deles.
+
+* Tipos de Redes
+	* None Network
+	* Bridge Network (Padrão) - Imagem
+	* Host Network - Tira a camada Bridge
+	* Overlay Network (Swarm) - Fazer cluster
+
+* docker network ls //LISTA AS REDES
+
+<h2>Rede Tipo None (Sem Rede)</h2>
+
+<img src="imgs/06.png"/>
+
+
+
 
 
 
