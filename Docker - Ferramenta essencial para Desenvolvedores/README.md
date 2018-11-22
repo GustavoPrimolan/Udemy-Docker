@@ -400,6 +400,58 @@
 * docker image inspect --format="{{}index .Config.Labels \"maintainer\"}" NOME_DA_IMAGEM //PESQUISA DENTRO DE INSPECTS
 
 
+<h2>Uso das instruções de povoamento</h2>
+
+* Arquivos que estão da sua máquina host para seu container.
+
+* FROM nginx:latest
+* LABEL maintainer 'Gustavo'
+* RUN echo '<h1>Sem conteudo</h1>' > /usr/share/nginx/html/conteudo.html
+* COPY *.html /usr/share/nginx/html //VAI COPIAR TUDO QUE FOR .html PARA A PASTA HTML DO CONTAINER
+
+* docker image build -t ex-build-copy .
+
+* docker container run -p 80:80 ex-build-copy
+
+<h2>Uso das instruções para execução do container</h2>
+
+* Criar a nova pasta que chama build-dev
+
+* Cria um index.html
+
+* Cria um servidor python 
+
+```py
+import logging
+import http.server
+import socketserver
+import getpass
+
+class MyHTTPHandler(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, format, *args):
+            logging.info("%s - - [%s] %s\n"% (
+                self.client_address[0],
+                self.log_date_time_string(),
+                format%args
+            ))
+
+logging.basicConfig(
+    filename='/log/http-server.log',
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+logging.getLogger().addHandler(logging.StreamHandler())
+logging.info('inicializando...')
+PORT = 8000
+
+httpd = socketserver.TCPServer(("",PORT), MyHTTPHandler)
+logging.info('escutando a porta: %s', PORT)
+logging.info('usuário: %s', getpass.getuser())
+httpd.serve_forever()
+
+```
+
 
 
 
